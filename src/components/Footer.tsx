@@ -19,7 +19,7 @@ export default function Footer() {
               <h3 className="text-2xl font-bold">Zen Balance</h3>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Tu espacio de bienestar y relajación. Descubre el equilibrio perfecto 
+              Tu espacio de bienestar y relajación en Paysandú. Descubre el equilibrio perfecto 
               entre cuerpo y mente a través de nuestros servicios especializados de masajes.
             </p>
             <div className="flex space-x-4">
@@ -57,11 +57,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contacto</h4>
             <ul className="space-y-2 text-gray-300">
-              <li>+57 300 123 4567</li>
-              <li>info@zenbalance.com</li>
-              <li>reservas@zenbalance.com</li>
-              <li>Calle 123 #45-67</li>
-              <li>Bogotá, Colombia</li>
+              <li>+598 472 123 456</li>
+              <li>info@zenbalance.com.uy</li>
+              <li>reservas@zenbalance.com.uy</li>
+              <li>Av. Artigas 1234</li>
+              <li>Paysandú, Uruguay</li>
             </ul>
           </div>
         </div>

@@ -12,16 +12,13 @@ export default function Hero() {
         {/* Logo principal */}
         <div className="flex justify-center mb-8">
           <div className="relative w-32 h-32 md:w-48 md:h-48">
-            <div className="w-full h-full bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 rounded-full flex items-center justify-center shadow-2xl">
-              <span className="text-6xl md:text-8xl font-bold" style={{
-                background: 'linear-gradient(135deg, #ec4899, #8b5cf6)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
-                Z
-              </span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Zen Balance"
+              fill
+              className="object-contain drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
 
@@ -40,7 +37,7 @@ export default function Hero() {
         {/* Subtítulo */}
         <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
           Descubre el equilibrio perfecto entre cuerpo y mente a través de nuestros 
-          servicios de masajes terapéuticos y relajación
+          servicios de masajes terapéuticos y relajación en Paysandú
         </p>
 
         {/* Botones de acción */}

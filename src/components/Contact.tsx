@@ -57,7 +57,7 @@ export default function Contact() {
 
         <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
           ¿Listo para comenzar tu viaje hacia el bienestar? Contáctanos y reserva tu 
-          sesión de relajación personalizada
+          sesión de relajación personalizada en Paysandú
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -77,8 +77,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-1">Teléfono</h4>
-                    <p className="text-gray-600">+57 300 123 4567</p>
-                    <p className="text-gray-600">+57 300 987 6543</p>
+                    <p className="text-gray-600">+598 472 123 456</p>
+                    <p className="text-gray-600">+598 99 123 456</p>
                   </div>
                 </div>
 
@@ -90,8 +90,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
-                    <p className="text-gray-600">info@zenbalance.com</p>
-                    <p className="text-gray-600">reservas@zenbalance.com</p>
+                    <p className="text-gray-600">info@zenbalance.com.uy</p>
+                    <p className="text-gray-600">reservas@zenbalance.com.uy</p>
                   </div>
                 </div>
 
@@ -103,8 +103,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-1">Ubicación</h4>
-                    <p className="text-gray-600">Calle 123 #45-67</p>
-                    <p className="text-gray-600">Bogotá, Colombia</p>
+                    <p className="text-gray-600">Av. Artigas 1234</p>
+                    <p className="text-gray-600">Paysandú, Uruguay</p>
                   </div>
                 </div>
 
@@ -117,7 +117,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-1">Horarios</h4>
                     <p className="text-gray-600">Lunes a Domingo</p>
-                    <p className="text-gray-600">8:00 AM - 8:00 PM</p>
+                    <p className="text-gray-600">9:00 AM - 8:00 PM</p>
                   </div>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                    placeholder="+57 300 123 4567"
+                    placeholder="+598 99 123 456"
                   />
                 </div>
 

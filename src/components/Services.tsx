@@ -6,7 +6,8 @@ const services = [
     name: "Masaje Relajante",
     description: "Libera tensiones y encuentra la paz interior con nuestro masaje relajante que combina técnicas suaves y aromaterapia.",
     duration: "60 minutos",
-    price: "$45.000",
+    price: "$2.500",
+    image: "/masaje1.png",
     features: ["Alivia el estrés", "Mejora el sueño", "Relajación profunda", "Aromaterapia incluida"]
   },
   {
@@ -14,7 +15,8 @@ const services = [
     name: "Masaje Terapéutico",
     description: "Tratamiento especializado para aliviar dolores musculares y mejorar la movilidad con técnicas avanzadas.",
     duration: "90 minutos",
-    price: "$65.000",
+    price: "$3.500",
+    image: "/masaje2.png",
     features: ["Alivia dolores musculares", "Mejora la movilidad", "Técnicas especializadas", "Evaluación previa"]
   },
   {
@@ -22,7 +24,8 @@ const services = [
     name: "Masaje Descontracturante",
     description: "Enfocado en liberar contracturas y tensiones acumuladas en zonas específicas del cuerpo.",
     duration: "45 minutos",
-    price: "$35.000",
+    price: "$1.800",
+    image: "/masaje1.png",
     features: ["Libera contracturas", "Alivia tensiones", "Enfoque específico", "Resultados inmediatos"]
   },
   {
@@ -30,7 +33,8 @@ const services = [
     name: "Masaje Holístico",
     description: "Experiencia completa que integra cuerpo, mente y espíritu para un bienestar total.",
     duration: "120 minutos",
-    price: "$85.000",
+    price: "$4.500",
+    image: "/masaje2.png",
     features: ["Bienestar integral", "Equilibrio energético", "Meditación guiada", "Experiencia completa"]
   }
 ];
@@ -52,7 +56,7 @@ export default function Services() {
 
         <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
           Descubre nuestra amplia gama de servicios de masajes diseñados para 
-          satisfacer todas tus necesidades de bienestar y relajación
+          satisfacer todas tus necesidades de bienestar y relajación en Paysandú
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
@@ -60,14 +64,12 @@ export default function Services() {
             <div key={service.id} className="card group hover:scale-105 transition-all duration-500">
               {/* Imagen del servicio */}
               <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
-                <div className="w-full h-full" style={{
-                  background: 'linear-gradient(135deg, #f8bbd9, #e1bee7, #c5cae9)'
-                }}>
-                  <div className="text-center h-full flex flex-col items-center justify-center">
-                    <div className="text-6xl mb-2">💆‍♀️</div>
-                    <p className="text-gray-600 font-medium">{service.name}</p>
-                  </div>
-                </div>
+                <Image
+                  src={service.image}
+                  alt={service.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Información del servicio */}
@@ -137,7 +139,7 @@ export default function Services() {
           <div className="card text-center">
             <div className="text-4xl mb-4">🏠</div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Servicio a Domicilio</h3>
-            <p className="text-gray-600">Llevamos la relajación hasta tu hogar</p>
+            <p className="text-gray-600">Llevamos la relajación hasta tu hogar en Paysandú</p>
           </div>
         </div>
       </div>
