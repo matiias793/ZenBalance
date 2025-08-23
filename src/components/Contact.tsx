@@ -1,0 +1,282 @@
+'use client';
+
+import { useState } from 'react';
+import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simular envío
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Aquí iría la lógica real de envío
+    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+    
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: ''
+    });
+    setIsSubmitting(false);
+  };
+
+  return (
+    <section id="contacto" className="py-16 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="section-title">
+          <span style={{
+            background: 'linear-gradient(135deg, #ec4899, #8b5cf6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            Contacto
+          </span>
+        </h2>
+
+        <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+          ¿Listo para comenzar tu viaje hacia el bienestar? Contáctanos y reserva tu 
+          sesión de relajación personalizada
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Información de contacto */}
+          <div className="space-y-8">
+            <div className="card">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Información de Contacto
+              </h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{
+                    background: 'linear-gradient(135deg, #f8bbd9, #e1bee7)'
+                  }}>
+                    <Phone className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">Teléfono</h4>
+                    <p className="text-gray-600">+57 300 123 4567</p>
+                    <p className="text-gray-600">+57 300 987 6543</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{
+                    background: 'linear-gradient(135deg, #c5cae9, #e1bee7)'
+                  }}>
+                    <Mail className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
+                    <p className="text-gray-600">info@zenbalance.com</p>
+                    <p className="text-gray-600">reservas@zenbalance.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{
+                    background: 'linear-gradient(135deg, #e1bee7, #f8bbd9)'
+                  }}>
+                    <MapPin className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">Ubicación</h4>
+                    <p className="text-gray-600">Calle 123 #45-67</p>
+                    <p className="text-gray-600">Bogotá, Colombia</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{
+                    background: 'linear-gradient(135deg, #c8e6c9, #c5cae9)'
+                  }}>
+                    <Clock className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">Horarios</h4>
+                    <p className="text-gray-600">Lunes a Domingo</p>
+                    <p className="text-gray-600">8:00 AM - 8:00 PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Beneficios */}
+            <div className="card">
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                ¿Por qué elegirnos?
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full" style={{
+                    background: 'linear-gradient(135deg, #ec4899, #8b5cf6)'
+                  }}></div>
+                  <span className="text-gray-700">Profesionales certificados</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full" style={{
+                    background: 'linear-gradient(135deg, #ec4899, #8b5cf6)'
+                  }}></div>
+                  <span className="text-gray-700">Ambiente relajante y seguro</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full" style={{
+                    background: 'linear-gradient(135deg, #ec4899, #8b5cf6)'
+                  }}></div>
+                  <span className="text-gray-700">Productos orgánicos de calidad</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full" style={{
+                    background: 'linear-gradient(135deg, #ec4899, #8b5cf6)'
+                  }}></div>
+                  <span className="text-gray-700">Servicio personalizado</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 rounded-full" style={{
+                    background: 'linear-gradient(135deg, #ec4899, #8b5cf6)'
+                  }}></div>
+                  <span className="text-gray-700">Flexibilidad de horarios</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Formulario de contacto */}
+          <div className="card">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              Envíanos un Mensaje
+            </h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Nombre completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                    placeholder="+57 300 123 4567"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                    Servicio de interés
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                  >
+                    <option value="">Selecciona un servicio</option>
+                    <option value="relajante">Masaje Relajante</option>
+                    <option value="terapeutico">Masaje Terapéutico</option>
+                    <option value="descontracturante">Masaje Descontracturante</option>
+                    <option value="holistico">Masaje Holístico</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Mensaje
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
+                  placeholder="Cuéntanos sobre tus necesidades o consultas..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Enviando...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    <span>Enviar Mensaje</span>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
