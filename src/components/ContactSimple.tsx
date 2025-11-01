@@ -1,108 +1,48 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailjs';
 
-export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
-  });
-
+export default function ContactSimple() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
-  // Inicializar EmailJS
-  useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    
-    // Limpiar mensajes de error cuando el usuario empiece a escribir
-    if (submitStatus === 'error') {
-      setSubmitStatus('idle');
-      setErrorMessage('');
-    }
-  };
-
-  const validateForm = () => {
-    if (!formData.name.trim()) {
-      setErrorMessage('Por favor ingresa tu nombre');
-      return false;
-    }
-    if (!formData.email.trim()) {
-      setErrorMessage('Por favor ingresa tu email');
-      return false;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setErrorMessage('Por favor ingresa un email válido');
-      return false;
-    }
-    if (formData.phone && !/^[\+]?[0-9\s\-\(\)]{8,}$/.test(formData.phone)) {
-      setErrorMessage('Por favor ingresa un teléfono válido');
-      return false;
-    }
-    return true;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      setSubmitStatus('error');
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    setErrorMessage('');
 
+    const formData = new FormData(e.currentTarget);
+    
     try {
-      // Configuración para EmailJS
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        from_phone: formData.phone || 'No proporcionado',
-        service: formData.service || 'No especificado',
-        message: formData.message || 'Sin mensaje adicional',
-        to_name: 'Zen Balance'
-      };
+      // Método más simple usando fetch con JSON
+      const response = await fetch('https://formspree.io/f/mkgzddgb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          service: formData.get('service'),
+          message: formData.get('message')
+        })
+      });
 
-      // Enviar email usando EmailJS
-      const result = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-
-      if (result.status === 200) {
+      if (response.ok) {
         setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: ''
-        });
+        // Usar una referencia más segura para resetear el formulario
+        const form = e.currentTarget;
+        if (form) {
+          form.reset();
+        }
       } else {
-        throw new Error('Error al enviar el mensaje');
+        setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error:', error);
       setSubmitStatus('error');
-      setErrorMessage('Hubo un error al enviar tu mensaje. Por favor intenta nuevamente o contáctanos por teléfono.');
     } finally {
       setIsSubmitting(false);
     }
@@ -110,7 +50,6 @@ export default function Contact() {
 
   const resetForm = () => {
     setSubmitStatus('idle');
-    setErrorMessage('');
   };
 
   return (
@@ -267,7 +206,7 @@ export default function Contact() {
                   <AlertCircle className="w-6 h-6 text-red-600" />
                   <div>
                     <h4 className="font-semibold text-red-800">Error al enviar mensaje</h4>
-                    <p className="text-red-700">{errorMessage}</p>
+                    <p className="text-red-700">Hubo un error al enviar tu mensaje. Por favor intenta nuevamente o contáctanos por teléfono.</p>
                   </div>
                 </div>
               </div>
@@ -283,8 +222,6 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="Tu nombre"
@@ -299,8 +236,6 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="tu@email.com"
@@ -317,8 +252,6 @@ export default function Contact() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                     placeholder="+598 99 123 456"
                   />
@@ -331,8 +264,6 @@ export default function Contact() {
                   <select
                     id="service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                   >
                     <option value="">Selecciona un servicio</option>
@@ -351,8 +282,6 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
                   placeholder="Cuéntanos sobre tus necesidades o consultas..."

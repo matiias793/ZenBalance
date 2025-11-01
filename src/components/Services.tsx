@@ -5,37 +5,37 @@ const services = [
     id: 1,
     name: "Masaje Relajante",
     description: "Libera tensiones y encuentra la paz interior con nuestro masaje relajante que combina técnicas suaves y aromaterapia.",
-    duration: "60 minutos",
-    price: "$2.500",
+    duration: "40-60 minutos",
+    price: "$1.200",
     image: "/masaje1.png",
     features: ["Alivia el estrés", "Mejora el sueño", "Relajación profunda", "Aromaterapia incluida"]
   },
   {
     id: 2,
-    name: "Masaje Terapéutico",
-    description: "Tratamiento especializado para aliviar dolores musculares y mejorar la movilidad con técnicas avanzadas.",
-    duration: "90 minutos",
-    price: "$3.500",
+    name: "Masaje Terapéutico y Descontracturante",
+    description: "Tratamiento especializado que combina técnicas terapéuticas para aliviar dolores musculares y liberar contracturas, mejorando la movilidad con técnicas avanzadas.",
+    duration: "45-60 minutos",
+    price: "$1.800",
     image: "/masaje2.png",
-    features: ["Alivia dolores musculares", "Mejora la movilidad", "Técnicas especializadas", "Evaluación previa"]
+    features: ["Alivia dolores musculares", "Libera contracturas", "Mejora la movilidad", "Evaluación previa"]
   },
   {
     id: 3,
-    name: "Masaje Descontracturante",
-    description: "Enfocado en liberar contracturas y tensiones acumuladas en zonas específicas del cuerpo.",
-    duration: "45 minutos",
+    name: "Masaje Deportivo",
+    description: "Especialmente diseñado para atletas y personas activas, ayuda a mejorar el rendimiento, prevenir lesiones y acelerar la recuperación muscular.",
+    duration: "30-60 minutos",
     price: "$1.800",
-    image: "/masaje1.png",
-    features: ["Libera contracturas", "Alivia tensiones", "Enfoque específico", "Resultados inmediatos"]
+    image: "/deportivo.jpg",
+    features: ["Mejora el rendimiento", "Previene lesiones", "Recuperación muscular", "Aumenta flexibilidad"]
   },
   {
     id: 4,
-    name: "Masaje Holístico",
-    description: "Experiencia completa que integra cuerpo, mente y espíritu para un bienestar total.",
-    duration: "120 minutos",
-    price: "$4.500",
-    image: "/masaje2.png",
-    features: ["Bienestar integral", "Equilibrio energético", "Meditación guiada", "Experiencia completa"]
+    name: "Masaje Reflexología",
+    description: "Técnica milenaria basada en la estimulación de puntos reflejos en pies, manos y orejas para equilibrar energía y promover el bienestar integral.",
+    duration: "30-45 minutos",
+    price: "$1.300",
+    image: "/reflex.jpg",
+    features: ["Equilibrio energético", "Reducción del estrés", "Mejora circulación", "Bienestar integral"]
   }
 ];
 
@@ -63,12 +63,12 @@ export default function Services() {
           {services.map((service) => (
             <div key={service.id} className="card group hover:scale-105 transition-all duration-500">
               {/* Imagen del servicio */}
-              <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+              <div className="relative h-48 mb-6 rounded-lg overflow-hidden bg-gray-100">
                 <Image
                   src={service.image}
                   alt={service.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
 

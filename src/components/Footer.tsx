@@ -46,9 +46,9 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Nuestros Servicios</h4>
             <ul className="space-y-2 text-gray-300">
               <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Relajante</a></li>
-              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Terapéutico</a></li>
-              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Descontracturante</a></li>
-              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Holístico</a></li>
+              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Terapéutico y Descontracturante</a></li>
+              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Deportivo</a></li>
+              <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Masaje Reflexología</a></li>
               <li><a href="#servicios" className="hover:text-purple-400 transition-colors">Servicio a Domicilio</a></li>
             </ul>
           </div>
@@ -58,8 +58,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contacto</h4>
             <ul className="space-y-2 text-gray-300">
               <li>+598 472 123 456</li>
-              <li>info@zenbalance.com.uy</li>
-              <li>reservas@zenbalance.com.uy</li>
+              <li>contacto.zenbalance@gmail.com</li>
               <li>Av. Artigas 1234</li>
               <li>Paysandú, Uruguay</li>
             </ul>
