@@ -19,7 +19,7 @@ export default function ContactBackup() {
     // Debug: Mostrar los datos del formulario
     console.log('=== DEBUGGING FORMULARIO ===');
     console.log('Datos del formulario:');
-    for (let [key, value] of formData.entries()) {
+    for (const [key, value] of formData.entries()) {
       console.log(`${key}: ${value}`);
     }
     
